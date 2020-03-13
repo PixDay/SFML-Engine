@@ -1,6 +1,6 @@
 /*
 ** 13/03/2020 Paris
-** DisplayObject.hpp
+** DisplayableObject.hpp
 ** File description:
 ** Adrien Colombier
 */
@@ -9,11 +9,11 @@
 
 #include "GameObject.hpp"
 
-class DisplayObject : GameObject
+class DisplayableObject : GameObject
 {
     public:
-        DisplayObject();
-        ~DisplayObject() = default;
+        DisplayableObject();
+        ~DisplayableObject() = default;
 
         /* SETTERS */
         void setTexture(std::string const &texture);

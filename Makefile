@@ -7,8 +7,8 @@
 
 CC 		=	g++
 
-SRCS	=	src/GameObject.cpp		\
-			src/DisplayObject.cpp		
+SRCS	=	src/GameObject.cpp			\
+			src/DisplayableObject.cpp		
 
 OBJ	=	${SRCS:.cpp=.o}
 
