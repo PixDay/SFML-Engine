@@ -9,7 +9,7 @@
 
 #include "GameObject.hpp"
 
-class DisplayableObject : GameObject
+class DisplayableObject : public GameObject
 {
     public:
         DisplayableObject();

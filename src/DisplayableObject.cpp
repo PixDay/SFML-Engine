@@ -6,9 +6,10 @@
 */
 
 #include "DisplayableObject.hpp"
-
+#include <iostream>
 DisplayableObject::DisplayableObject()
 {
+    this->setType("DisplayableObject");
 }
 
 
@@ -28,17 +29,17 @@ void DisplayableObject::setLayout(size_t const &layout)
 
 /* GETTERS */
 
-const sf::Sprite    DisplayableObject::getSprite(void)     const
+sf::Sprite    DisplayableObject::getSprite(void)     const
 {
     return _sprite;
 }
 
-const sf::Texture   DisplayableObject::getTexture(void)    const
+sf::Texture   DisplayableObject::getTexture(void)    const
 {
     return _texture;
 }
 
-const size_t        DisplayableObject::getLayout(void)     const
+size_t        DisplayableObject::getLayout(void)     const
 {
     return _layout;
 }

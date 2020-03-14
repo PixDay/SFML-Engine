@@ -19,7 +19,7 @@ class Scene
         void addObject(GameObject const &gameObject);
 
         /* DELETERS */
-        void deleteObject();
+        void deleteObject(std::string const &tag);
 
         /* SETTERS */
         void setName(std::string const &name);

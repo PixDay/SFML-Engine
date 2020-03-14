@@ -19,8 +19,17 @@ void Scene::addObject(GameObject const &gameObject)
 }
 
 /* DELETERS */
-void Scene::deleteObject()
+void Scene::deleteObject(std::string const &tag)
 {
+    size_t iterator = 0;
+
+    for (auto gameObject : _gameObjects) {
+        if (gameObject.getTag() == tag) {
+            _gameObjects.erase(_gameObjects.begin() + iterator);
+            break;
+        }
+        iterator++;
+    }
 }
 
 /* SETTERS */
@@ -30,12 +39,12 @@ void Scene::setName(std::string const &name)
 }
 
 /* GETTERS */
-const std::vector<GameObject> Scene::getGameObjects() const
+std::vector<GameObject> Scene::getGameObjects() const
 {
     return _gameObjects;
 }
 
-const std::string             Scene::getName() const
+std::string             Scene::getName() const
 {
     return _name;
 }
