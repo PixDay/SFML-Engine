@@ -28,7 +28,7 @@ void DisplayableObject::setLayout(size_t const &layout)
 
 /* GETTERS */
 
-const sf::Sprite    DisplayabeObject::getSprite(void)     const
+const sf::Sprite    DisplayableObject::getSprite(void)     const
 {
     return _sprite;
 }
