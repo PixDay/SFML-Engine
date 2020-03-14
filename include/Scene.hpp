@@ -25,8 +25,8 @@ class Scene
         void setName(std::string const &name);
 
         /* GETTERS */
-        const std::vector<GameObject>   getGameObjects() const;
-        const std::string               getName() const;
+        std::vector<GameObject>   getGameObjects() const;
+        std::string               getName() const;
 
     private:
         std::string             _name;

@@ -20,9 +20,9 @@ class DisplayableObject : GameObject
         void setLayout(size_t const &layout);
 
         /* GETTERS */
-        const sf::Sprite    getSprite(void)     const;
-        const sf::Texture   getTexture(void)    const;
-        const size_t        getLayout(void)     const;
+        sf::Sprite    getSprite(void)     const;
+        sf::Texture   getTexture(void)    const;
+        size_t        getLayout(void)     const;
         
     private:
         sf::Sprite  _sprite;

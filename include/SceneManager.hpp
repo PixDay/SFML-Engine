@@ -26,9 +26,9 @@ class SceneManager
         void setCurrentScene(std::string const &name);
 
         /* GETTERS */
-        const sf::RenderWindow      *getWindow() const;
-        const std::vector<Scene>    getScenes() const;
-        const size_t                getCurrentScene() const;
+        sf::RenderWindow *    getWindow() const;
+        std::vector<Scene>    getScenes() const;
+        size_t                getCurrentScene() const;
 
     private:
         sf::RenderWindow    *_window;
