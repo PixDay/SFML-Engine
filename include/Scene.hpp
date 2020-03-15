@@ -16,7 +16,7 @@ class Scene
         ~Scene() = default;
 
         /* ADDERS */
-        void addObject(GameObject const &gameObject);
+        void addObject(GameObject * const gameObject);
 
         /* DELETERS */
         void deleteObject(std::string const &tag);
@@ -25,10 +25,10 @@ class Scene
         void setName(std::string const &name);
 
         /* GETTERS */
-        std::vector<GameObject>   getGameObjects() const;
-        std::string               getName() const;
+        std::vector<GameObject *>   getGameObjects() const;
+        std::string                 getName() const;
 
     private:
-        std::string             _name;
-        std::vector<GameObject> _gameObjects;
+        std::string                 _name;
+        std::vector<GameObject *>   _gameObjects;
 };

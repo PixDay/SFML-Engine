@@ -10,7 +10,8 @@
 
 SceneManager::SceneManager():
 _window(new sf::RenderWindow(sf::VideoMode(800, 600), "SFML window")),
-_currentScene(0)
+_currentScene(0),
+_cursor(new Cursor())
 {
     this->addScene("SFML-Engine-default");
 }
@@ -18,6 +19,7 @@ _currentScene(0)
 SceneManager::~SceneManager()
 {
     delete _window;
+    delete _cursor;
 }
 
 void SceneManager::update(void) const
@@ -25,12 +27,8 @@ void SceneManager::update(void) const
     _window->clear(sf::Color::Black);
 
     for (auto displayableElement : _scenes[_currentScene].getGameObjects()) {
-        if (displayableElement.getType() == "DisplayableObject") {
-            if ((static_cast<DisplayableObject &>(displayableElement)).getSprite().getTexture() == nullptr)
-                std::cout << "is nullptr" << std::endl;
-            else {
-                _window->draw((static_cast<DisplayableObject &>(displayableElement)).getSprite());
-            }
+        if (displayableElement->getType() == "DisplayableObject") {
+            _window->draw(*(static_cast<DisplayableObject *>(displayableElement)->getSprite()));
         }
     }
     _window->display();
@@ -86,8 +84,8 @@ void SceneManager::setEngineCursor()
 {
     _window->setMouseCursorVisible(false);
     _scenes[_currentScene].addObject(
-        dynamic_cast<GameObject &>(
-        dynamic_cast<DisplayableObject &>(_cursor)
+        dynamic_cast<GameObject *>(
+        dynamic_cast<DisplayableObject *>(_cursor)
         )
     );
 }
@@ -95,10 +93,10 @@ void SceneManager::setEngineCursor()
 void SceneManager::setPersonalCursor(std::string const &texture)
 {
     _window->setMouseCursorVisible(false);
-    _cursor.setTexture(texture);
+    _cursor->setTexture(texture);
     _scenes[_currentScene].addObject(
-        dynamic_cast<GameObject &>(
-        dynamic_cast<DisplayableObject &>(_cursor)
+        dynamic_cast<GameObject *>(
+        dynamic_cast<DisplayableObject *>(_cursor)
         )
     );
 }

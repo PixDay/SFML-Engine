@@ -23,11 +23,11 @@ class GameObject
         void setActive(bool const &active);
 
         /* GETTERS */
-        std::string   getTag(void)        const;
-        std::string   getType(void)       const;
-        sf::Vector2f  getPosition(void)   const;
-        sf::Vector2f  getScale(void)      const;
-        bool          getActive(void)     const;
+        std::string     getTag(void)        const;
+        std::string     getType(void)       const;
+        sf::Vector2f    getPosition(void)   const;
+        sf::Vector2f    getScale(void)      const;
+        bool            getActive(void)     const;
 
     private:
         std::string     _tag;

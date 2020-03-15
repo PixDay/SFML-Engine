@@ -13,19 +13,19 @@ class DisplayableObject : public GameObject
 {
     public:
         DisplayableObject();
-        ~DisplayableObject() = default;
+        ~DisplayableObject();
 
         /* SETTERS */
         void setTexture(std::string const &texture);
         void setLayout(size_t const &layout);
 
         /* GETTERS */
-        sf::Sprite    getSprite(void)     const;
-        sf::Texture   getTexture(void)    const;
-        size_t        getLayout(void)     const;
+        sf::Sprite *    getSprite(void)     const;
+        sf::Texture     getTexture(void)    const;
+        size_t          getLayout(void)     const;
         
     private:
-        sf::Sprite  _sprite;
-        sf::Texture _texture;
-        size_t      _layout;
+        sf::Sprite *    _sprite;
+        sf::Texture     _texture;
+        size_t          _layout;
 };
