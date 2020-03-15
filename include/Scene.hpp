@@ -25,8 +25,9 @@ class Scene
         void setName(std::string const &name);
 
         /* GETTERS */
-        std::vector<GameObject *>   getGameObjects() const;
-        std::string                 getName() const;
+        std::vector<GameObject *>   getGameObjects()                    const;
+        std::string                 getName()                           const;
+        bool                        isExisting(std::string const &tag)  const;
 
     private:
         std::string                 _name;

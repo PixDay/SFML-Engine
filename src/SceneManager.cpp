@@ -83,6 +83,7 @@ void SceneManager::setSystemCursor()
 void SceneManager::setEngineCursor()
 {
     _window->setMouseCursorVisible(false);
+    _scenes[_currentScene].deleteObject("cursor");
     _scenes[_currentScene].addObject(
         dynamic_cast<GameObject *>(
         dynamic_cast<DisplayableObject *>(_cursor)
@@ -93,6 +94,7 @@ void SceneManager::setEngineCursor()
 void SceneManager::setPersonalCursor(std::string const &texture)
 {
     _window->setMouseCursorVisible(false);
+    _scenes[_currentScene].deleteObject("cursor");
     _cursor->setTexture(texture);
     _scenes[_currentScene].addObject(
         dynamic_cast<GameObject *>(

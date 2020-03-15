@@ -49,3 +49,12 @@ std::string               Scene::getName() const
 {
     return _name;
 }
+
+bool                      Scene::isExisting(std::string const &tag)  const
+{
+    for (auto gameObject : _gameObjects) {
+        if (gameObject->getTag() == tag)
+            return true;
+    }
+    return false;
+}
