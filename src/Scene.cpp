@@ -25,10 +25,8 @@ void Scene::deleteObject(std::string const &tag)
 
     for (auto gameObject : _gameObjects) {
         if (gameObject->getTag() == tag) {
-            std::cout << _gameObjects.size() << std::endl;
             delete _gameObjects[iterator];
-            //_gameObjects.erase(_gameObjects.begin() + iterator);
-            std::cout << _gameObjects.size() << std::endl;
+            _gameObjects.erase(_gameObjects.begin() + iterator);
             break;
         }
         iterator++;

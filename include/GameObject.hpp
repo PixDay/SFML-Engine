@@ -19,6 +19,7 @@ class GameObject
         void setTag(std::string const &tag);
         void setType(std::string const &type);
         void setPosition(sf::Vector2f const &position);
+        void setPosition(sf::Vector2f const &position, sf::Sprite *sprite);
         void setScale(sf::Vector2f const &scale);
         void setActive(bool const &active);
 

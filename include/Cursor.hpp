@@ -15,5 +15,9 @@ class Cursor : public DisplayableObject
         Cursor();
         ~Cursor() = default;
         
+        /* GETTERS */
+        sf::Mouse   getMouse()  const;
+
     private:
+        sf::Mouse   _mouse;
 };

@@ -19,13 +19,13 @@ _cursor(new Cursor())
 SceneManager::~SceneManager()
 {
     delete _window;
-    delete _cursor;
 }
 
 void SceneManager::update(void) const
 {
     _window->clear(sf::Color::Black);
 
+    _cursor->setPosition(static_cast<sf::Vector2f>(_cursor->getMouse().getPosition(*_window)), _cursor->getSprite());
     for (auto displayableElement : _scenes[_currentScene].getGameObjects()) {
         if (displayableElement->getType() == "DisplayableObject") {
             _window->draw(*(static_cast<DisplayableObject *>(displayableElement)->getSprite()));

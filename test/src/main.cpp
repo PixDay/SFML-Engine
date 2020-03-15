@@ -6,6 +6,7 @@ int main(void)
     sf::Event event;
 
     sceneManager.setEngineCursor();
+    sceneManager.setEngineCursor();
     while (sceneManager.getWindow()->isOpen())
     {
         while (sceneManager.getWindow()->pollEvent(event))
@@ -15,5 +16,6 @@ int main(void)
         }
         sceneManager.update();
     }
+    sceneManager.getScenes()[sceneManager.getCurrentScene()].deleteObject("cursor");
     return 0;
 }
