@@ -6,21 +6,31 @@
 */
 
 #include "Scene.hpp"
-
+#include <iostream>
 Scene::Scene(std::string const &name):
 _name(name)
 {
 }
 
 /* ADDERS */
-void Scene::addObject(GameObject const &gameObject)
+void Scene::addObject(GameObject * const gameObject)
 {
     _gameObjects.push_back(gameObject);
 }
 
 /* DELETERS */
-void Scene::deleteObject()
+void Scene::deleteObject(std::string const &tag)
 {
+    size_t iterator = 0;
+
+    for (auto gameObject : _gameObjects) {
+        if (gameObject->getTag() == tag) {
+            delete _gameObjects[iterator];
+            _gameObjects.erase(_gameObjects.begin() + iterator);
+            break;
+        }
+        iterator++;
+    }
 }
 
 /* SETTERS */
@@ -30,12 +40,12 @@ void Scene::setName(std::string const &name)
 }
 
 /* GETTERS */
-const std::vector<GameObject> Scene::getGameObjects() const
+std::vector<GameObject *> Scene::getGameObjects() const
 {
     return _gameObjects;
 }
 
-const std::string             Scene::getName() const
+std::string               Scene::getName() const
 {
     return _name;
 }

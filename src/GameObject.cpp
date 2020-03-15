@@ -9,6 +9,7 @@
 
 GameObject::GameObject():
 _tag("default"),
+_type("GameObject"),
 _position({0.0f, 0.0f}),
 _scale({1.0f, 1.0f}),
 _active(true)
@@ -23,9 +24,20 @@ void GameObject::setTag(std::string const &tag)
     _tag = tag;
 }
 
+void GameObject::setType(std::string const &type)
+{
+    _type = type;
+}
+
 void GameObject::setPosition(sf::Vector2f const &position)
 {
     _position = position;
+}
+
+void GameObject::setPosition(sf::Vector2f const &position, sf::Sprite *sprite)
+{
+    _position = position;
+    sprite->setPosition(position);
 }
 
 void GameObject::setScale(sf::Vector2f const &scale)
@@ -41,22 +53,27 @@ void GameObject::setActive(bool const &active)
 
 /* GETTERS */
 
-const std::string   GameObject::getTag(void)        const
+std::string   GameObject::getTag(void)        const
 {
     return _tag;
 }
 
-const sf::Vector2f  GameObject::getPosition(void)   const
+std::string   GameObject::getType(void)       const
+{
+    return _type;
+}
+
+sf::Vector2f  GameObject::getPosition(void)   const
 {
     return _position;
 }
 
-const sf::Vector2f  GameObject::getScale(void)      const
+sf::Vector2f  GameObject::getScale(void)      const
 {
     return _scale;
 }
 
-const bool          GameObject::getActive(void)     const
+bool          GameObject::getActive(void)     const
 {
     return _active;
 }

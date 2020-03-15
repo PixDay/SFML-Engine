@@ -11,3 +11,4 @@
 #include "Scene.hpp"
 #include "SceneManager.hpp"
 #include "DisplayableObject.hpp"
+#include "Cursor.hpp"

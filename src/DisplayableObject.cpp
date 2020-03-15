@@ -7,17 +7,23 @@
 
 #include "DisplayableObject.hpp"
 
-DisplayableObject::DisplayableObject()
+DisplayableObject::DisplayableObject():
+_sprite(new sf::Sprite())
 {
+    this->setType("DisplayableObject");
 }
 
+DisplayableObject::~DisplayableObject()
+{
+    delete _sprite;
+}
 
 /* SETTERS */
 
 void DisplayableObject::setTexture(std::string const &texture)
 {
     _texture.loadFromFile(texture);
-    _sprite.setTexture(_texture, false);
+    _sprite->setTexture(_texture, false);
 }
 
 void DisplayableObject::setLayout(size_t const &layout)
@@ -28,17 +34,17 @@ void DisplayableObject::setLayout(size_t const &layout)
 
 /* GETTERS */
 
-const sf::Sprite    DisplayableObject::getSprite(void)     const
+sf::Sprite*   DisplayableObject::getSprite(void)     const
 {
     return _sprite;
 }
 
-const sf::Texture   DisplayableObject::getTexture(void)    const
+sf::Texture   DisplayableObject::getTexture(void)    const
 {
     return _texture;
 }
 
-const size_t        DisplayableObject::getLayout(void)     const
+size_t        DisplayableObject::getLayout(void)     const
 {
     return _layout;
 }
