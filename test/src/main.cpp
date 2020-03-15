@@ -5,7 +5,7 @@ int main(void)
     SceneManager sceneManager;
     sf::Event event;
 
-    sceneManager.setEngineCursor();
+    sceneManager.setSystemCursor();
     sceneManager.setEngineCursor();
     while (sceneManager.getWindow()->isOpen())
     {

@@ -27,7 +27,8 @@ void SceneManager::update(void) const
 
     _cursor->setPosition(static_cast<sf::Vector2f>(_cursor->getMouse().getPosition(*_window)), _cursor->getSprite());
     for (auto displayableElement : _scenes[_currentScene].getGameObjects()) {
-        if (displayableElement->getType() == "DisplayableObject") {
+        if (displayableElement->getType() == "DisplayableObject" &&
+            (static_cast<DisplayableObject *>(displayableElement)->getActive())) {
             _window->draw(*(static_cast<DisplayableObject *>(displayableElement)->getSprite()));
         }
     }
@@ -77,13 +78,14 @@ void SceneManager::setCurrentScene(std::string const &name)
 void SceneManager::setSystemCursor()
 {
     _window->setMouseCursorVisible(true);
-    _scenes[_currentScene].deleteObject("cursor");
+    _cursor->setActive(false);
 }
 
 void SceneManager::setEngineCursor()
 {
     _window->setMouseCursorVisible(false);
     _scenes[_currentScene].deleteObject("cursor");
+    _cursor = new Cursor();
     _scenes[_currentScene].addObject(
         dynamic_cast<GameObject *>(
         dynamic_cast<DisplayableObject *>(_cursor)
@@ -95,6 +97,7 @@ void SceneManager::setPersonalCursor(std::string const &texture)
 {
     _window->setMouseCursorVisible(false);
     _scenes[_currentScene].deleteObject("cursor");
+    _cursor = new Cursor();
     _cursor->setTexture(texture);
     _scenes[_currentScene].addObject(
         dynamic_cast<GameObject *>(
