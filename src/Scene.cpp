@@ -6,7 +6,6 @@
 */
 
 #include "Scene.hpp"
-#include <iostream>
 Scene::Scene(std::string const &name):
 _name(name)
 {

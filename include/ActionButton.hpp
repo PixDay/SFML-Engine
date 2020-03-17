@@ -16,12 +16,13 @@ class ActionButton : public DisplayableObject
         ActionButton(std::string const &texture, std::string const &hoverTexture);
         ~ActionButton() = default;
 
-        void update(sf::Vector2f &point);
+        void update(sf::Vector2f const &point);
 
         /* SETTERS */
         void setTextures(std::string const &texture, std::string const &hoverTexture);
         void setDefaultTexture(std::string const &texture);
         void setHoverTexture(std::string const &texture);
+        void setEngineBlue(void);
 
     private:
         sf::Texture     _texture;

@@ -9,6 +9,11 @@
 
 ActionButton::ActionButton()
 {
+    this->setTag("ActionButton");
+    _texture.loadFromFile("img/ui/actionButton/button.png");
+    this->setTexture(_texture);
+    _hoverTexture.loadFromFile("img/ui/actionButton/blueHover.png");
+
 }
 
 ActionButton::ActionButton(std::string const &texture, std::string const &hoverTexture)
@@ -17,6 +22,13 @@ ActionButton::ActionButton(std::string const &texture, std::string const &hoverT
     _hoverTexture.loadFromFile(hoverTexture);
 
     this->setTexture(_texture);
+}
+
+void ActionButton::update(sf::Vector2f const &point)
+{
+    sf::FloatRect hitbox {this->getPosition().x, this->getPosition().y, 190.0f, 149.0f};
+
+    this->setTexture((hitbox.contains(point)) ? _hoverTexture : _texture);
 }
 
 /* SETTERS */
@@ -38,4 +50,11 @@ void ActionButton::setDefaultTexture(std::string const &texture)
 void ActionButton::setHoverTexture(std::string const &texture)
 {
     _hoverTexture.loadFromFile(texture);
+}
+
+void ActionButton::setEngineBlue(void)
+{
+    _texture.loadFromFile("img/ui/actionButton/button.png");
+    this->setTexture(_texture);
+    _hoverTexture.loadFromFile("img/ui/actionButton/blueHover/.png");
 }

@@ -9,6 +9,7 @@
 
 #include "Scene.hpp"
 #include "Cursor.hpp"
+#include "ActionButton.hpp"
 
 class SceneManager
 {
@@ -19,6 +20,7 @@ class SceneManager
         void update() const;
         /* ADDERS */
         void addScene(std::string const &name);
+        void addObject(GameObject *object);
 
         /* DELETERS */
         void deleteScene(std::string const &name);
