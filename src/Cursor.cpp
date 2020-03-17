@@ -11,6 +11,7 @@ Cursor::Cursor()
 {
     this->setTag("cursor");
     this->setTexture("img/cursor/SFML-Engine-cursor.png");
+    this->setLayout(10);
 }
 
 /* GETTERS */

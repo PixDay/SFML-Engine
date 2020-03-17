@@ -13,7 +13,7 @@ ActionButton::ActionButton()
     _texture.loadFromFile("img/ui/actionButton/button.png");
     this->setTexture(_texture);
     _hoverTexture.loadFromFile("img/ui/actionButton/blueHover.png");
-
+    this->setLayout(9);
 }
 
 ActionButton::ActionButton(std::string const &texture, std::string const &hoverTexture)
@@ -22,11 +22,12 @@ ActionButton::ActionButton(std::string const &texture, std::string const &hoverT
     _hoverTexture.loadFromFile(hoverTexture);
 
     this->setTexture(_texture);
+    this->setLayout(9);
 }
 
 void ActionButton::update(sf::Vector2f const &point)
 {
-    sf::FloatRect hitbox {this->getPosition().x, this->getPosition().y, 190.0f, 149.0f};
+    sf::FloatRect hitbox {this->getPosition().x, this->getPosition().y, 190.0f, 49.0f};
 
     this->setTexture((hitbox.contains(point)) ? _hoverTexture : _texture);
 }

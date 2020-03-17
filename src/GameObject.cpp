@@ -45,6 +45,11 @@ void GameObject::setScale(sf::Vector2f const &scale)
     _scale = scale;
 }
 
+void GameObject::setLayout(size_t const &layout)
+{
+    _layout = layout;
+}
+
 void GameObject::setActive(bool const &active)
 {
     _active = active;
@@ -72,6 +77,12 @@ sf::Vector2f  GameObject::getScale(void)      const
 {
     return _scale;
 }
+
+size_t        GameObject::getLayout(void)     const
+{
+    return _layout;
+}
+
 
 bool          GameObject::getActive(void)     const
 {

@@ -21,6 +21,7 @@ class GameObject
         void setPosition(sf::Vector2f const &position);
         void setPosition(sf::Vector2f const &position, sf::Sprite *sprite);
         void setScale(sf::Vector2f const &scale);
+        void setLayout(size_t const &layout);
         void setActive(bool const &active);
 
         /* GETTERS */
@@ -28,12 +29,15 @@ class GameObject
         std::string     getType(void)       const;
         sf::Vector2f    getPosition(void)   const;
         sf::Vector2f    getScale(void)      const;
+        size_t          getLayout(void)     const;
         bool            getActive(void)     const;
+
 
     private:
         std::string     _tag;
         std::string     _type;
         sf::Vector2f    _position;
         sf::Vector2f    _scale;
+        size_t          _layout;
         bool            _active;
 };
