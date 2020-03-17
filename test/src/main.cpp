@@ -3,19 +3,8 @@
 int main(void)
 {
     SceneManager sceneManager;
-    sf::Event event;
 
-    sceneManager.setSystemCursor();
     sceneManager.setEngineCursor();
-    while (sceneManager.getWindow()->isOpen())
-    {
-        while (sceneManager.getWindow()->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                sceneManager.getWindow()->close();
-        }
-        sceneManager.update();
-    }
-    sceneManager.getScenes()[sceneManager.getCurrentScene()].deleteObject("cursor");
+    sceneManager.update();
     return 0;
 }

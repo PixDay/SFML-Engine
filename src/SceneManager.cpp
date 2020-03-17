@@ -23,16 +23,25 @@ SceneManager::~SceneManager()
 
 void SceneManager::update(void) const
 {
-    _window->clear(sf::Color::Black);
+    sf::Event event;
 
-    _cursor->setPosition(static_cast<sf::Vector2f>(_cursor->getMouse().getPosition(*_window)), _cursor->getSprite());
-    for (auto displayableElement : _scenes[_currentScene].getGameObjects()) {
-        if (displayableElement->getType() == "DisplayableObject" &&
-            (static_cast<DisplayableObject *>(displayableElement)->getActive())) {
-            _window->draw(*(static_cast<DisplayableObject *>(displayableElement)->getSprite()));
+    while (_window->isOpen())
+    {
+        while (_window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                _window->close();
         }
+        _window->clear(sf::Color::Black);
+        _cursor->setPosition(static_cast<sf::Vector2f>(_cursor->getMouse().getPosition(*_window)), _cursor->getSprite());
+        for (auto displayableElement : _scenes[_currentScene].getGameObjects()) {
+            if (displayableElement->getType() == "DisplayableObject" &&
+                (static_cast<DisplayableObject *>(displayableElement)->getActive())) {
+                _window->draw(*(static_cast<DisplayableObject *>(displayableElement)->getSprite()));
+            }
+        }
+        _window->display();
     }
-    _window->display();
 }
 
  /* ADDERS */

@@ -26,6 +26,12 @@ void DisplayableObject::setTexture(std::string const &texture)
     _sprite->setTexture(_texture, false);
 }
 
+void DisplayableObject::setTexture(sf::Texture const &texture)
+{
+    _texture = texture;
+    _sprite->setTexture(texture, false);
+}
+
 void DisplayableObject::setLayout(size_t const &layout)
 {
     _layout = layout;

@@ -17,6 +17,7 @@ class DisplayableObject : public GameObject
 
         /* SETTERS */
         void setTexture(std::string const &texture);
+        void setTexture(sf::Texture const &texture);
         void setLayout(size_t const &layout);
 
         /* GETTERS */
