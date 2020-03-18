@@ -12,7 +12,7 @@
 class ActionButton : public DisplayableObject
 {
     public:
-        ActionButton();
+        ActionButton(void (*function)(void), float x, float y);
         ActionButton(std::string const &texture, std::string const &hoverTexture);
         ~ActionButton() = default;
 
@@ -23,8 +23,10 @@ class ActionButton : public DisplayableObject
         void setDefaultTexture(std::string const &texture);
         void setHoverTexture(std::string const &texture);
         void setEngineBlue(void);
+        void setFunction(void (*function)(void));
 
     private:
         sf::Texture     _texture;
         sf::Texture     _hoverTexture;
+        void            (*_function)(void);
 };

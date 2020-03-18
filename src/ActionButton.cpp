@@ -7,14 +7,17 @@
 
 #include "ActionButton.hpp"
 
-ActionButton::ActionButton()
+ActionButton::ActionButton(void (*function)(void), float x, float y)
 {
     this->setTag("ActionButton");
     _texture.loadFromFile("img/ui/actionButton/button.png");
     this->setTexture(_texture);
     _hoverTexture.loadFromFile("img/ui/actionButton/blueHover.png");
+    _function = function;
+    this->setPosition({x, y}, this->getSprite());
     this->setLayout(9);
     this->setDimension(190.0f, 49.0f);
+
 }
 
 ActionButton::ActionButton(std::string const &texture, std::string const &hoverTexture)
@@ -36,6 +39,9 @@ void ActionButton::update(sf::Vector2f const &point)
     };
 
     this->setTexture((hitbox.contains(point)) ? _hoverTexture : _texture);
+    if (hitbox.contains(point) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        if (_function != nullptr)
+            _function();
 }
 
 /* SETTERS */
@@ -64,4 +70,9 @@ void ActionButton::setEngineBlue(void)
     _texture.loadFromFile("img/ui/actionButton/button.png");
     this->setTexture(_texture);
     _hoverTexture.loadFromFile("img/ui/actionButton/blueHover/.png");
+}
+
+void ActionButton::setFunction(void (*function)(void))
+{
+    _function = function;
 }
