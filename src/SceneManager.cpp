@@ -52,6 +52,11 @@ void SceneManager::addScene(std::string const &name)
 {
     Scene scene(name);
     _scenes.push_back(scene);
+    _scenes[this->getScene(name)].addObject(
+        dynamic_cast<GameObject *>(
+        dynamic_cast<DisplayableObject *>(_cursor)
+        )
+    );
 }
 
 void SceneManager::addObject(GameObject *object)
@@ -102,26 +107,29 @@ void SceneManager::setSystemCursor()
 void SceneManager::setEngineCursor()
 {
     _window->setMouseCursorVisible(false);
-    _scenes[_currentScene].deleteObject("cursor");
+    _cursor->setActive(true);
+    /*_scenes[_currentScene].deleteObject("cursor");
     _cursor = new Cursor();
     _scenes[_currentScene].addObject(
         dynamic_cast<GameObject *>(
         dynamic_cast<DisplayableObject *>(_cursor)
         )
-    );
+    );*/
 }
 
 void SceneManager::setPersonalCursor(std::string const &texture)
 {
     _window->setMouseCursorVisible(false);
-    _scenes[_currentScene].deleteObject("cursor");
+    _cursor->setActive(true);
+    _cursor->setTexture(texture);
+    /*_scenes[_currentScene].deleteObject("cursor");
     _cursor = new Cursor();
     _cursor->setTexture(texture);
     _scenes[_currentScene].addObject(
         dynamic_cast<GameObject *>(
         dynamic_cast<DisplayableObject *>(_cursor)
         )
-    );
+    );*/
 }
 
 /* GETTERS */
@@ -137,5 +145,17 @@ std::vector<Scene>    SceneManager::getScenes() const
 
 size_t                SceneManager::getCurrentScene() const
 {
+    return _currentScene;
+}
+
+size_t                SceneManager::getScene(std::string const &name) const
+{
+    size_t iterator = 0;
+
+    for (auto scene : _scenes) {
+        if (scene.getName() == name)
+            return iterator;
+        iterator++;
+    }
     return _currentScene;
 }
