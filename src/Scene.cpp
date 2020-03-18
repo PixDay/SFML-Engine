@@ -6,6 +6,8 @@
 */
 
 #include "Scene.hpp"
+#include <algorithm>
+
 Scene::Scene(std::string const &name):
 _name(name)
 {
@@ -16,8 +18,8 @@ void Scene::addObject(GameObject * const gameObject)
 {
     _gameObjects.push_back(gameObject);
     std::sort(_gameObjects.begin(), _gameObjects.end(), [](const GameObject* lhs, const GameObject* rhs) {
-        return lhs->getLayout() > rhs->getLayout();
-    });
+             return lhs->getLayout() < rhs->getLayout();
+         });
 }
 
 /* DELETERS */

@@ -43,12 +43,6 @@ void DisplayableObject::setDimension(size_t const &x, size_t const &y)
     _hitbox.y = y;
 }
 
-void DisplayableObject::setLayout(size_t const &layout)
-{
-    _layout = layout;
-}
-
-
 /* GETTERS */
 
 sf::Sprite*   DisplayableObject::getSprite(void)     const
@@ -64,10 +58,4 @@ sf::Texture   DisplayableObject::getTexture(void)    const
 sf::Vector2f    DisplayableObject::getDimension(void)  const
 {
     return _hitbox;
-}
-
-
-size_t        DisplayableObject::getLayout(void)     const
-{
-    return _layout;
 }

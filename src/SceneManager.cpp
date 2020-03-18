@@ -48,6 +48,7 @@ void SceneManager::update(void) const
 }
 
  /* ADDERS */
+ 
 void SceneManager::addScene(std::string const &name)
 {
     Scene scene(name);
@@ -66,6 +67,7 @@ void SceneManager::addObject(GameObject *object)
 
 
 /* DELETERS */
+
 void SceneManager::deleteScene(std::string const &name)
 {
     size_t iterator = 0;
@@ -80,6 +82,7 @@ void SceneManager::deleteScene(std::string const &name)
 }
 
 /* SETTERS */
+
 void SceneManager::setCurrentScene(size_t const &scene)
 {
     _currentScene = scene;
@@ -108,13 +111,6 @@ void SceneManager::setEngineCursor()
 {
     _window->setMouseCursorVisible(false);
     _cursor->setActive(true);
-    /*_scenes[_currentScene].deleteObject("cursor");
-    _cursor = new Cursor();
-    _scenes[_currentScene].addObject(
-        dynamic_cast<GameObject *>(
-        dynamic_cast<DisplayableObject *>(_cursor)
-        )
-    );*/
 }
 
 void SceneManager::setPersonalCursor(std::string const &texture)
@@ -122,17 +118,10 @@ void SceneManager::setPersonalCursor(std::string const &texture)
     _window->setMouseCursorVisible(false);
     _cursor->setActive(true);
     _cursor->setTexture(texture);
-    /*_scenes[_currentScene].deleteObject("cursor");
-    _cursor = new Cursor();
-    _cursor->setTexture(texture);
-    _scenes[_currentScene].addObject(
-        dynamic_cast<GameObject *>(
-        dynamic_cast<DisplayableObject *>(_cursor)
-        )
-    );*/
 }
 
 /* GETTERS */
+
 sf::RenderWindow      *SceneManager::getWindow() const
 {
     return _window;
