@@ -20,7 +20,7 @@ class GameObject
         void setType(std::string const &type);
         void setPosition(sf::Vector2f const &position);
         void setPosition(sf::Vector2f const &position, sf::Sprite *sprite);
-        void setScale(sf::Vector2f const &scale);
+        void setScale(sf::Vector2f const &scale, sf::Sprite *sprite);
         void setLayout(size_t const &layout);
         void setActive(bool const &active);
 

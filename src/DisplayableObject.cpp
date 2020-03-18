@@ -32,6 +32,17 @@ void DisplayableObject::setTexture(sf::Texture const &texture)
     _sprite->setTexture(texture, false);
 }
 
+void DisplayableObject::setDimension(sf::Vector2f const &hitbox)
+{
+    _hitbox = hitbox;
+}
+
+void DisplayableObject::setDimension(size_t const &x, size_t const &y)
+{
+    _hitbox.x = x;
+    _hitbox.y = y;
+}
+
 void DisplayableObject::setLayout(size_t const &layout)
 {
     _layout = layout;
@@ -49,6 +60,12 @@ sf::Texture   DisplayableObject::getTexture(void)    const
 {
     return _texture;
 }
+
+sf::Vector2f    DisplayableObject::getDimension(void)  const
+{
+    return _hitbox;
+}
+
 
 size_t        DisplayableObject::getLayout(void)     const
 {

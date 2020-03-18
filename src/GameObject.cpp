@@ -40,9 +40,11 @@ void GameObject::setPosition(sf::Vector2f const &position, sf::Sprite *sprite)
     sprite->setPosition(position);
 }
 
-void GameObject::setScale(sf::Vector2f const &scale)
+void GameObject::setScale(sf::Vector2f const &scale, sf::Sprite *sprite)
 {
     _scale = scale;
+    sprite->setScale(_scale);
+    
 }
 
 void GameObject::setLayout(size_t const &layout)
