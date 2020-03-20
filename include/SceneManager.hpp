@@ -43,5 +43,6 @@ class SceneManager
         size_t              _currentScene;
         std::vector<Scene>  _scenes;
         Cursor *            _cursor;
+        sf::Keyboard::Key   _leaveKey;
 
 };

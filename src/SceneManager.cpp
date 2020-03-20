@@ -10,7 +10,8 @@
 SceneManager::SceneManager():
 _window(new sf::RenderWindow(sf::VideoMode(800, 600), "SFML window")),
 _currentScene(0),
-_cursor(new Cursor())
+_cursor(new Cursor()),
+_leaveKey(sf::Keyboard::Key::Escape)
 {
     this->addScene("SFML-Engine-default");
 }
@@ -29,7 +30,7 @@ void SceneManager::update(void) const
 
         while (_window->pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(_leaveKey))
                 _window->close();
         }
 
