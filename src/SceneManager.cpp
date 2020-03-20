@@ -8,12 +8,13 @@
 #include "SceneManager.hpp"
 
 SceneManager::SceneManager():
-_window(new sf::RenderWindow(sf::VideoMode(800, 600), "SFML window")),
+_window(new sf::RenderWindow(sf::VideoMode(1920, 1080), "SFML Engine", sf::Style::Fullscreen)),
 _currentScene(0),
 _cursor(new Cursor()),
 _leaveKey(sf::Keyboard::Key::Escape)
 {
     this->addScene("SFML-Engine-default");
+    _window->setVerticalSyncEnabled(true);
 }
 
 SceneManager::~SceneManager()

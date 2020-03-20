@@ -24,7 +24,9 @@ int main(void)
     sceneManager.addObject(new ActionButton(game, 300.0f, 100.0f));
     sceneManager.addObject(new ActionButton(game, 200.0f, 300.0f));
     DisplayableObject * background  = new DisplayableObject();
-    delete background;
+    background->setTexture("img/background/background.png");
+    background->setLayout(0);
+    sceneManager.addObject(background); 
     sceneManager.update();
     return 0;
 }
