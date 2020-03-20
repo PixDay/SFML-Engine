@@ -42,8 +42,10 @@ void SceneManager::update(void) const
             if (displayableElement->getTag() == "ActionButton")
                 (static_cast<ActionButton *>(displayableElement))->update(_cursor->getPosition());
             
-            if (displayableElement->getType() == "DisplayableObject" && (static_cast<DisplayableObject *>(displayableElement)->getActive()))
+            if (displayableElement->getType() == "DisplayableObject" && (static_cast<DisplayableObject *>(displayableElement)->getActive())) {
+                static_cast<DisplayableObject *>(displayableElement)->update();
                 _window->draw(*(static_cast<DisplayableObject *>(displayableElement)->getSprite()));
+            }
         }
         _window->display();
     }

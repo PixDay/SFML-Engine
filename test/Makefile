@@ -13,7 +13,7 @@ OBJECTS =	${SRC:.cpp=.o}
 
 NAME	=	test
 
-CFLAGS	=	-Wall -Wextra -pedantic -Ofast -I ../include
+CFLAGS	=	-Wall -Wextra -pedantic -Ofast -I ../include -I./include
 
 LDFLAGS	=	-lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio -L.. -lmerline
 

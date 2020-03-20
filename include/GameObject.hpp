@@ -33,7 +33,7 @@ class GameObject
         bool            getActive(void)     const;
 
         /* OPERATORS */
-        bool operator < (const GameObject &object) const { printf("SORTING\n"); return _layout < object.getLayout(); }
+        bool operator < (const GameObject &object) const { return _layout < object.getLayout(); }
 
     private:
         std::string     _tag;

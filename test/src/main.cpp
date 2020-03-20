@@ -1,4 +1,5 @@
 #include "SFML-Engine.h"
+#include "main.hpp"
 #include <iostream>
 
 SceneManager sceneManager;
@@ -27,6 +28,13 @@ int main(void)
     background->setTexture("img/background/background.png");
     background->setLayout(0);
     sceneManager.addObject(background); 
+    DisplayableObject * cube = new DisplayableObject();
+    cube->setTexture("img/animation/cube/cube000.png");
+    cube->addAnimation(cubeAnimation, 0.03, 1.0f, true);
+    cube->setLayout(19);
+    const sf::Vector2f position(1200.0f, 700.0f);
+    cube->setPosition(position, cube->getSprite());
+    sceneManager.addObject(cube);
     sceneManager.update();
     return 0;
 }

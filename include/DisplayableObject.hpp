@@ -8,12 +8,21 @@
 #pragma once
 
 #include "GameObject.hpp"
+#include "Animator.hpp"
 
 class DisplayableObject : public GameObject
 {
     public:
         DisplayableObject();
         ~DisplayableObject();
+
+        void update();
+        
+        /* ADDERS */
+        void addAnimation(std::vector<std::string> &frames, float timeToWait, float speed, bool loop);
+
+        /* DELETERS */
+        void deleteAnimation(std::string &name);
 
         /* SETTERS */
         void setTexture(std::string const &texture);
@@ -30,4 +39,6 @@ class DisplayableObject : public GameObject
         sf::Sprite *    _sprite;
         sf::Texture     _texture;
         sf::Vector2f    _hitbox;
+        Animator        _animator;
+        
 };

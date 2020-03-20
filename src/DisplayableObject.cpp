@@ -8,7 +8,8 @@
 #include "DisplayableObject.hpp"
 
 DisplayableObject::DisplayableObject():
-_sprite(new sf::Sprite())
+_sprite(new sf::Sprite()),
+_animator(Animator(_sprite))
 {
     this->setType("DisplayableObject");
 }
@@ -16,6 +17,23 @@ _sprite(new sf::Sprite())
 DisplayableObject::~DisplayableObject()
 {
     delete _sprite;
+}
+
+void DisplayableObject::update()
+{
+    _animator.update();
+}
+
+/* ADDERS */
+void DisplayableObject::addAnimation(std::vector<std::string> &frames, float timeToWait, float speed, bool loop)
+{
+    _animator.addAnimation(frames, timeToWait, speed, loop);
+}
+
+/* DELETERS */
+void DisplayableObject::deleteAnimation(std::string &name)
+{
+    _animator.deleteAnimation(name);
 }
 
 /* SETTERS */
