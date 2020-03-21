@@ -14,6 +14,7 @@ class DisplayableObject : public GameObject
 {
     public:
         DisplayableObject();
+        DisplayableObject(std::string const &texture);
         ~DisplayableObject();
 
         void update();

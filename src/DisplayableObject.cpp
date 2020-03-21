@@ -14,6 +14,16 @@ _animator(Animator(_sprite))
     this->setType("DisplayableObject");
 }
 
+DisplayableObject::DisplayableObject(std::string const &texture):
+_sprite(new sf::Sprite()),
+_animator(Animator(_sprite))
+{
+    this->setType("DisplayableObject");
+    
+    _texture.loadFromFile(texture);
+    _sprite->setTexture(_texture, false);
+}
+
 DisplayableObject::~DisplayableObject()
 {
     delete _sprite;

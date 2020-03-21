@@ -20,12 +20,14 @@ ActionButton::ActionButton(void (*function)(void), float x, float y)
 
 }
 
-ActionButton::ActionButton(std::string const &texture, std::string const &hoverTexture)
+ActionButton::ActionButton(void (*function)(void), float x, float y, std::string const &texture, std::string const &hoverTexture)
 {
+    this->setTag("ActionButton");
     _texture.loadFromFile(texture);
     _hoverTexture.loadFromFile(hoverTexture);
-
     this->setTexture(_texture);
+    _function = function;
+    this->setPosition({x, y}, this->getSprite());
     this->setLayout(9);
 }
 

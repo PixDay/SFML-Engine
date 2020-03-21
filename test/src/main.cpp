@@ -1,5 +1,5 @@
 #include "SFML-Engine.h"
-#include "main.hpp"
+#include "cube"
 #include <iostream>
 
 SceneManager sceneManager;
@@ -14,27 +14,39 @@ void game(void)
 {
     sceneManager.setCurrentScene("game");
     sceneManager.setSystemCursor();
-    sceneManager.addObject(new ActionButton(menu, 0.0f, 300.0f));
 }
 
 int main(void)
 {
+    // CREATING A GAME SCENE 
     sceneManager.addScene("game");
+
+    // SET CURSOR TYPE OF CURRENT SCENE (DEFAULT HERE)
     sceneManager.setEngineCursor();
-    sceneManager.addObject(new ActionButton(game, 100.0f, 100.0f));
-    sceneManager.addObject(new ActionButton(game, 300.0f, 100.0f));
-    sceneManager.addObject(new ActionButton(game, 200.0f, 300.0f));
-    DisplayableObject * background  = new DisplayableObject();
-    background->setTexture("img/background/background.png");
+
+    // ADD AN ACTIONBUTTON TO THE SCENE
+    sceneManager.addObject(new ActionButton(game, 720.0f, 110.0f));
+
+    // ADD AN ACTIONBUTTON TO THE GAME SCENE
+    sceneManager.addObjectTo(new ActionButton(menu, 0.0f, 300.0f), "game");
+
+    // ADD A BACKGROUND TO THE SCENE
+    DisplayableObject * background  = new DisplayableObject("img/background/background.png");
     background->setLayout(0);
     sceneManager.addObject(background); 
-    DisplayableObject * cube = new DisplayableObject();
+
+    // ADD AN ANIMATED OBJECT TO THE SCENE
+    DisplayableObject * cube = new DisplayableObject();    
     cube->setTexture("img/animation/cube/cube000.png");
     cube->addAnimation(cubeAnimation, 0.03, 1.0f, true);
     cube->setLayout(19);
-    const sf::Vector2f position(1200.0f, 700.0f);
+    const sf::Vector2f position(1550.0f, 800.0f);
     cube->setPosition(position, cube->getSprite());
+    const sf::Vector2f scale(0.5f, 0.5f);
+    cube->setScale(scale, cube->getSprite());
     sceneManager.addObject(cube);
+    
+    // PLAY THE GAME
     sceneManager.update();
     return 0;
 }

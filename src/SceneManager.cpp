@@ -69,6 +69,10 @@ void SceneManager::addObject(GameObject *object)
     _scenes[_currentScene].addObject(object);
 }
 
+void SceneManager::addObjectTo(GameObject *object, std::string const &name)
+{
+    _scenes[this->getScene(name)].addObject(object);
+}
 
 /* DELETERS */
 

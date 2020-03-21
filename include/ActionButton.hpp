@@ -13,7 +13,7 @@ class ActionButton : public DisplayableObject
 {
     public:
         ActionButton(void (*function)(void), float x, float y);
-        ActionButton(std::string const &texture, std::string const &hoverTexture);
+        ActionButton(void (*function)(void), float x, float y, std::string const &texture, std::string const &hoverTexture);
         ~ActionButton() = default;
 
         void update(sf::Vector2f const &point);

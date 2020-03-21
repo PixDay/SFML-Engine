@@ -21,6 +21,7 @@ class SceneManager
         /* ADDERS */
         void addScene(std::string const &name);
         void addObject(GameObject *object);
+        void addObjectTo(GameObject *object, std::string const &name);
 
         /* DELETERS */
         void deleteScene(std::string const &name);
