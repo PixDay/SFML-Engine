@@ -14,7 +14,9 @@ SRCS	=	src/GameObject.cpp			\
 			src/Cursor.cpp				\
 			src/ActionButton.cpp		\
 			src/Animation.cpp			\
-			src/Animator.cpp
+			src/Animator.cpp			\
+			src/Sound.cpp				\
+			src/SoundManager.cpp
 
 OBJ	=	${SRCS:.cpp=.o}
 

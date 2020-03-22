@@ -3,6 +3,7 @@
 #include <iostream>
 
 SceneManager sceneManager;
+SoundManager soundManager;
 
 void menu(void)
 {
@@ -46,6 +47,9 @@ int main(void)
     cube->setScale(scale, cube->getSprite());
     sceneManager.addObject(cube);
     
+    // ADD SOUND TO GLOBAL
+    soundManager.addSound("listener", "sound/listener.ogg", true);
+    soundManager.playSound("listener");
     // PLAY THE GAME
     sceneManager.update();
     return 0;

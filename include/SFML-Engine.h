@@ -13,3 +13,6 @@
 #include "DisplayableObject.hpp"
 #include "Cursor.hpp"
 #include "ActionButton.hpp"
+#include "Animation.hpp"
+#include "Animator.hpp"
+#include "SoundManager.hpp"
