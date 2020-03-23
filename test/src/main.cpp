@@ -1,6 +1,7 @@
 #include "SFML-Engine.h"
 #include "cube"
 #include <iostream>
+ 
 
 SceneManager sceneManager;
 SoundManager soundManager;
@@ -52,5 +53,6 @@ int main(void)
     soundManager.playSound("listener");
     // PLAY THE GAME
     sceneManager.update();
+    std::this_thread::sleep_for (std::chrono::seconds(2));
     return 0;
 }

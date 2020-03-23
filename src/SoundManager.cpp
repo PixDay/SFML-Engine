@@ -30,6 +30,13 @@ void SoundManager::playSound(std::string const &name, bool loop)
         }
 }
 
+void SoundManager::stopSound(std::string const &name)
+{
+    for (auto sound : _sounds)
+        if (sound.getName() == name)
+            sound.getSound()->stop();
+}
+
 /* ADDERS */
 void SoundManager::addSound(std::string const &name, std::string const &path)
 {

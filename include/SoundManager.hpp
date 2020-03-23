@@ -17,6 +17,7 @@ class SoundManager
 
         void playSound(std::string const &name);
         void playSound(std::string const &name, bool loop);
+        void stopSound(std::string const &name);
 
         /* ADDERS */
         void addSound(std::string const &name, std::string const &path);

@@ -24,6 +24,6 @@ class Sound
         sf::Music *     getSound()  const;
 
     private:
-        std::string     _name;  
-        sf::Music *     _sound;
+        std::string         _name;  
+        sf::Music *         _sound;
 };
