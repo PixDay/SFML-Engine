@@ -53,6 +53,5 @@ int main(void)
     soundManager.playSound("listener");
     // PLAY THE GAME
     sceneManager.update();
-    std::this_thread::sleep_for (std::chrono::seconds(2));
     return 0;
 }

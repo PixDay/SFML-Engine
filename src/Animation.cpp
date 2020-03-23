@@ -52,11 +52,14 @@ _play(loop)
 
 void Animation::play(sf::Sprite *sprite)
 {
-    sprite->setTexture(_textures[_currentFrame]);
-    _currentFrame++;
-    if (_currentFrame >= _totalFrame) {
-        _currentFrame = 0;
-        _play = _loop;
+    if (_clock.getElapsedTime().asSeconds() >= _timeToWait) {
+        sprite->setTexture(_textures[_currentFrame]);
+        _currentFrame++;
+        if (_currentFrame >= _totalFrame) {
+            _currentFrame = 0;
+            _play = _loop;
+        }
+        _clock.restart();
     }
 }
 

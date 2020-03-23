@@ -34,6 +34,7 @@ class Animation
     private:
         std::vector<std::string>    _texturesPath;
         std::vector<sf::Texture>    _textures;
+        sf::Clock                   _clock;
         double                      _timeToWait;
         double                      _speed;
         size_t                      _totalFrame;
