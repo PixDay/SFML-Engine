@@ -14,7 +14,7 @@ void menu(void)
 
 void game(void)
 {
-    sceneManager.setCurrentScene("game");
+    sceneManager.setCurrentSceneTransition("game");
     sceneManager.setSystemCursor();
 }
 
@@ -30,7 +30,7 @@ int main(void)
     sceneManager.addObject(new ActionButton(game, 720.0f, 110.0f));
 
     // ADD AN ACTIONBUTTON TO THE GAME SCENE
-    sceneManager.addObjectTo(new ActionButton(menu, 0.0f, 300.0f), "game");
+    sceneManager.addObjectTo(new ActionButton(menu, 600.0f, 300.0f), "game");
     DisplayableObject * gameBackground = new DisplayableObject("img/background/background.jpg");
     gameBackground->setLayout(0);
     sceneManager.addObjectTo(gameBackground, "game");

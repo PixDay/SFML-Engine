@@ -10,6 +10,7 @@
 #include "Scene.hpp"
 #include "Cursor.hpp"
 #include "ActionButton.hpp"
+#include "Transition.hpp"
 
 class SceneManager
 {
@@ -17,7 +18,9 @@ class SceneManager
         SceneManager();
         ~SceneManager();
         
-        void update() const;
+        void update();
+        void makeTransition();
+
         /* ADDERS */
         void addScene(std::string const &name);
         void addObject(GameObject *object);
@@ -29,6 +32,7 @@ class SceneManager
         /* SETTERS */
         void setCurrentScene(size_t const &scene);
         void setCurrentScene(std::string const &name);
+        void setCurrentSceneTransition(std::string const &name);
         void setSystemCursor();
         void setEngineCursor();
         void setPersonalCursor(std::string const &texture);
@@ -45,5 +49,6 @@ class SceneManager
         std::vector<Scene>  _scenes;
         Cursor *            _cursor;
         sf::Keyboard::Key   _leaveKey;
-
+        Transition *        _transition;
+        std::string         _transitionTo;
 };

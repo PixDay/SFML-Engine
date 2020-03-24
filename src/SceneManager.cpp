@@ -11,7 +11,9 @@ SceneManager::SceneManager():
 _window(new sf::RenderWindow(sf::VideoMode(1920, 1080), "SFML Engine", sf::Style::Fullscreen)),
 _currentScene(0),
 _cursor(new Cursor()),
-_leaveKey(sf::Keyboard::Key::Escape)
+_leaveKey(sf::Keyboard::Key::Escape),
+_transition(new Transition()),
+_transitionTo("")
 {
     this->addScene("SFML-Engine-default");
     _window->setVerticalSyncEnabled(true);
@@ -22,13 +24,13 @@ SceneManager::~SceneManager()
     delete _window;
 }
 
-void SceneManager::update(void) const
+void SceneManager::update(void)
 {
     sf::Event event;
 
+displaySkipper:
     while (_window->isOpen())
     {
-
         while (_window->pollEvent(event))
         {
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(_leaveKey))
@@ -46,12 +48,28 @@ void SceneManager::update(void) const
                 static_cast<DisplayableObject *>(displayableElement)->update();
                 _window->draw(*(static_cast<DisplayableObject *>(displayableElement)->getSprite()));
             }
+            if (_transitionTo != "") {
+                this->makeTransition();
+                if (_transitionTo == "continue") {
+                    _transitionTo = "";
+                    goto displaySkipper;
+                }
+            }
+            
         }
         _window->display();
     }
 }
 
- /* ADDERS */
+void SceneManager::makeTransition(void)
+{
+    if (_transition->playTransition()) {
+        this->setCurrentScene(_transitionTo);
+        _transitionTo = "continue";
+    }
+}
+
+/* ADDERS */
  
 void SceneManager::addScene(std::string const &name)
 {
@@ -106,6 +124,14 @@ void SceneManager::setCurrentScene(std::string const &name)
             break;
         }
         iterator++;
+    }
+}
+
+void SceneManager::setCurrentSceneTransition(std::string const &name)
+{
+    if (_transitionTo == "") {
+        this->addObject(_transition);
+        _transitionTo = name;
     }
 }
 
