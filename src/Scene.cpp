@@ -37,6 +37,19 @@ void Scene::deleteObject(std::string const &tag)
     }
 }
 
+void Scene::eraseObject(std::string const &tag)
+{
+size_t iterator = 0;
+
+    for (auto gameObject : _gameObjects) {
+        if (gameObject->getTag() == tag) {
+            _gameObjects.erase(_gameObjects.begin() + iterator);
+            break;
+        }
+        iterator++;
+    }
+}
+
 /* SETTERS */
 void Scene::setName(std::string const &name)
 {

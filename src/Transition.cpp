@@ -8,7 +8,7 @@
 #include "Transition.hpp"
 
 Transition::Transition():
-_duration(1.0)
+_duration(0.8)
 {
     sf::Vector2f origin(64.0f, 64.0f);
     sf::Vector2f position(960.0f, 540.0f);

@@ -8,7 +8,7 @@ SoundManager soundManager;
 
 void menu(void)
 {
-    sceneManager.setCurrentScene("SFML-Engine-default");
+    sceneManager.setCurrentSceneTransition("SFML-Engine-default");
     sceneManager.setEngineCursor();
 }
 

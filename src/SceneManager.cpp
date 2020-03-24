@@ -63,7 +63,10 @@ displaySkipper:
 
 void SceneManager::makeTransition(void)
 {
+    size_t iterator = 0;
+
     if (_transition->playTransition()) {
+        this->_scenes[_currentScene].eraseObject("transition");
         this->setCurrentScene(_transitionTo);
         _transitionTo = "continue";
     }
