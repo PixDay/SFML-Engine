@@ -15,4 +15,6 @@
 #include "ActionButton.hpp"
 #include "Animation.hpp"
 #include "Animator.hpp"
+#include "Sound.hpp"
 #include "SoundManager.hpp"
+#include "Transition.hpp"

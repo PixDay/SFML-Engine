@@ -28,6 +28,8 @@ class DisplayableObject : public GameObject
         /* SETTERS */
         void setTexture(std::string const &texture);
         void setTexture(sf::Texture const &texture);
+        void setOrigin(sf::Vector2f const &origin, sf::Sprite *sprite);
+        void setScale(sf::Vector2f const &scale, sf::Sprite *sprite);
         void setDimension(sf::Vector2f const &hitbox);
         void setDimension(size_t const &x, size_t const &y);
 
@@ -39,6 +41,8 @@ class DisplayableObject : public GameObject
     private:
         sf::Sprite *    _sprite;
         sf::Texture     _texture;
+        sf::Vector2f    _origin;
+        sf::Vector2f    _scale;
         sf::Vector2f    _hitbox;
         Animator        _animator;
         

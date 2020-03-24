@@ -60,6 +60,18 @@ void DisplayableObject::setTexture(sf::Texture const &texture)
     _sprite->setTexture(texture, false);
 }
 
+void DisplayableObject::setOrigin(sf::Vector2f const &origin, sf::Sprite *sprite)
+{
+    _origin = origin;
+    _sprite->setOrigin(_origin);
+}
+
+void DisplayableObject::setScale(sf::Vector2f const &scale, sf::Sprite *sprite)
+{
+    _scale = scale;
+    _sprite->setScale(_scale);
+}
+
 void DisplayableObject::setDimension(sf::Vector2f const &hitbox)
 {
     _hitbox = hitbox;

@@ -37,7 +37,7 @@ void GameObject::setPosition(sf::Vector2f const &position)
 void GameObject::setPosition(sf::Vector2f const &position, sf::Sprite *sprite)
 {
     _position = position;
-    sprite->setPosition(position);
+    sprite->setPosition(_position);
 }
 
 void GameObject::setScale(sf::Vector2f const &scale, sf::Sprite *sprite)
@@ -45,6 +45,12 @@ void GameObject::setScale(sf::Vector2f const &scale, sf::Sprite *sprite)
     _scale = scale;
     sprite->setScale(_scale);
     
+}
+
+void GameObject::setOrigin(sf::Vector2f const &origin, sf::Sprite *sprite)
+{
+    _origin = origin;
+    sprite->setOrigin(_origin);
 }
 
 void GameObject::setLayout(size_t const &layout)
