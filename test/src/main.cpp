@@ -31,6 +31,9 @@ int main(void)
 
     // ADD AN ACTIONBUTTON TO THE GAME SCENE
     sceneManager.addObjectTo(new ActionButton(menu, 0.0f, 300.0f), "game");
+    DisplayableObject * gameBackground = new DisplayableObject("img/background/background.jpg");
+    gameBackground->setLayout(0);
+    sceneManager.addObjectTo(gameBackground, "game");
 
     // ADD A BACKGROUND TO THE SCENE
     DisplayableObject * background  = new DisplayableObject("img/background/background.png");
