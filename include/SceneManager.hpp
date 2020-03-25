@@ -33,6 +33,7 @@ class SceneManager
         void setCurrentScene(size_t const &scene);
         void setCurrentScene(std::string const &name);
         void setCurrentSceneTransition(std::string const &name);
+        void setTransitionTexture(std::string const &name);
         void setSystemCursor();
         void setEngineCursor();
         void setPersonalCursor(std::string const &texture);

@@ -14,7 +14,7 @@ class Transition : public DisplayableObject
     public:
         Transition();
         Transition(std::string const &path, double duration);
-        ~Transition();
+        ~Transition() = default;
 
         bool playTransition(void);
 

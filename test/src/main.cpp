@@ -8,12 +8,14 @@ SoundManager soundManager;
 
 void menu(void)
 {
+    sceneManager.setTransitionTexture("img/transition/circle-transition.png");
     sceneManager.setCurrentSceneTransition("SFML-Engine-default");
     sceneManager.setEngineCursor();
 }
 
 void game(void)
 {
+    sceneManager.setTransitionTexture("img/transition/star-transition.png");
     sceneManager.setCurrentSceneTransition("game");
     sceneManager.setSystemCursor();
 }

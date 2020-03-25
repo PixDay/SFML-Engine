@@ -18,6 +18,7 @@ _duration(0.8)
     this->setOrigin(origin, this->getSprite());
     this->setPosition(position, this->getSprite());
     this->setTag("transition");
+    this->setScale({0.0f, 0.0f}, this->getSprite());
 }
 
 Transition::Transition(std::string const &path, double duration):
@@ -35,6 +36,7 @@ _duration(duration)
     this->setOrigin(origin, this->getSprite());
     this->setPosition(position, this->getSprite());
     this->setTag("transition");
+    this->setScale({0.0f, 0.0f}, this->getSprite());
 }
 
 bool Transition::playTransition(void)
@@ -45,7 +47,7 @@ bool Transition::playTransition(void)
         _clock.restart();
     if(_clock.getElapsedTime().asSeconds() >= _duration) {
         playTime = 0.0f;
-        sf::Vector2f defaultScale(1.0f, 1.0f);
+        sf::Vector2f defaultScale(0.0f, 0.0f);
         this->setScale(defaultScale, this->getSprite());
         return true;
     }

@@ -138,6 +138,12 @@ void SceneManager::setCurrentSceneTransition(std::string const &name)
     }
 }
 
+void SceneManager::setTransitionTexture(std::string const &name)
+{
+    delete _transition;
+    _transition = new Transition(name, 0.8);
+}
+
 void SceneManager::setSystemCursor()
 {
     _window->setMouseCursorVisible(true);
