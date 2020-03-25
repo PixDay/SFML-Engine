@@ -14,3 +14,5 @@ J'essaie de maintenir une documentation en parrallèle du developpement : [docum
 
 SFML-Engin is an open source library. You can make it yours and modify it as you wish.
 I try to keep this engine documented : [documentation](https://docs.google.com/document/d/1jjEraLyhTe8BT5GRxwjQakNl2n-6jEK0nVZl2I5Osjc/edit?usp=sharing)
+
+![img](https://cdna.artstation.com/p/assets/images/images/024/585/252/large/yin-ning-lim-68c294e6c0a733e9c08627305a7d4dca.jpg?1582889246)
