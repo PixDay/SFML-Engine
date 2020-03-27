@@ -13,9 +13,9 @@ OBJECTS =	${SRC:.cpp=.o}
 
 NAME	=	test
 
-CFLAGS	=	-Wall -Wextra -pedantic -Ofast -I ../include -I./include
+CFLAGS	=	-Wall -Wextra -pedantic -Ofast -I ../library/include -I./include
 
-LDFLAGS	=	-lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio -L.. -lmerline
+LDFLAGS	=	-lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio -L../library -lmerline
 
 all:	${NAME}
 
