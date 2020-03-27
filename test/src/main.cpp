@@ -1,10 +1,6 @@
 #include "SFML-Engine.h"
 #include "cube"
 #include <iostream>
- 
-
-SceneManager sceneManager;
-SoundManager soundManager;
 
 void menu(void)
 {

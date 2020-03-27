@@ -18,3 +18,6 @@
 #include "Sound.hpp"
 #include "SoundManager.hpp"
 #include "Transition.hpp"
+
+SceneManager sceneManager;
+SoundManager soundManager;
