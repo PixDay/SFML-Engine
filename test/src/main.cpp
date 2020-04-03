@@ -16,6 +16,25 @@ void game(void)
     sceneManager.setSystemCursor();
 }
 
+void moveAnimatedObject(DisplayableObject *object)
+{   
+    static sf::Vector2f direction = {5.0f, 5.0f};
+
+    sf::Vector2f position = object->getPosition();
+
+    if (position.x > 1730.0f)
+        direction.x = -10.0f;
+    if (position.x < -30.0f)
+        direction.x = 10.0f;
+    if (position.y > 890.0f)
+        direction.y = -10.0f;
+    if (position.y < -30.0f)
+        direction.y = 10.0f;
+    position.x += direction.x;
+    position.y += direction.y;
+    object->setPosition(position, object->getSprite());
+}
+
 int main(void)
 {
     // CREATING A GAME SCENE 
@@ -39,8 +58,8 @@ int main(void)
     sceneManager.addObject(background); 
 
     // ADD AN ANIMATED OBJECT TO THE SCENE
-    DisplayableObject * cube = new DisplayableObject();    
-    cube->setTexture("img/animation/cube/cube000.png");
+    DisplayableObject * cube = new DisplayableObject("img/animation/cube/cube000.png");
+    cube->setFunction(moveAnimatedObject);
     cube->addAnimation(cubeAnimation, 0.03, 1.0f, true);
     cube->setLayout(19);
     const sf::Vector2f position(1550.0f, 800.0f);

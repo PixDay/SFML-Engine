@@ -15,6 +15,7 @@ class DisplayableObject : public GameObject
     public:
         DisplayableObject();
         DisplayableObject(std::string const &texture);
+        DisplayableObject(std::string const &texture, void (function)(DisplayableObject *));
         ~DisplayableObject();
 
         void update();
@@ -34,6 +35,7 @@ class DisplayableObject : public GameObject
         void setDimension(size_t const &x, size_t const &y);
         void setAngle(float const &angle);
         void setAngleCenter(float const &angle);
+        void setFunction(void (function)(DisplayableObject *));
 
         /* GETTERS */
         sf::Sprite *    getSprite(void)     const;
@@ -49,5 +51,5 @@ class DisplayableObject : public GameObject
         sf::Vector2f    _hitbox;
         float           _angle;
         Animator        _animator;
-        
+        void            (*_function)(DisplayableObject *test);
 };

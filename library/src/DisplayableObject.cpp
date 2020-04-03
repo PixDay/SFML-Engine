@@ -9,17 +9,30 @@
 
 DisplayableObject::DisplayableObject():
 _sprite(new sf::Sprite()),
-_animator(Animator(_sprite))
+_animator(Animator(_sprite)),
+_function(nullptr)
 {
     this->setType("DisplayableObject");
 }
 
 DisplayableObject::DisplayableObject(std::string const &texture):
 _sprite(new sf::Sprite()),
-_animator(Animator(_sprite))
+_animator(Animator(_sprite)),
+_function(nullptr)
 {
     this->setType("DisplayableObject");
     
+    _texture.loadFromFile(texture);
+    _sprite->setTexture(_texture, false);
+}
+
+DisplayableObject::DisplayableObject(std::string const &texture, void (function)(DisplayableObject *)):
+_sprite(new sf::Sprite()),
+_animator(Animator(_sprite)),
+_function(_function)
+{
+    this->setType("DisplayableObject");
+
     _texture.loadFromFile(texture);
     _sprite->setTexture(_texture, false);
 }
@@ -32,6 +45,8 @@ DisplayableObject::~DisplayableObject()
 void DisplayableObject::update()
 {
     _animator.update();
+    if (_function != nullptr)
+        _function(this);
 }
 
 /* ADDERS */
@@ -99,6 +114,11 @@ void DisplayableObject::setAngleCenter(float const &angle)
     _angle = angle;
     _sprite->setRotation(_angle);
     _sprite->setOrigin(_origin);
+}
+
+void DisplayableObject::setFunction(void (*function)(DisplayableObject *))
+{
+    _function = function;
 }
 
 /* GETTERS */
