@@ -83,6 +83,24 @@ void DisplayableObject::setDimension(size_t const &x, size_t const &y)
     _hitbox.y = y;
 }
 
+void DisplayableObject::setAngle(float const &angle)
+{
+    _angle = angle;
+    _sprite->setRotation(_angle);
+}
+
+void DisplayableObject::setAngleCenter(float const &angle)
+{
+    sf::Vector2u center = _sprite->getTexture()->getSize();
+
+    center.x = center.x / 2;
+    center.y = center.y / 2;
+    _sprite->setOrigin(static_cast<sf::Vector2f>(center));
+    _angle = angle;
+    _sprite->setRotation(_angle);
+    _sprite->setOrigin(_origin);
+}
+
 /* GETTERS */
 
 sf::Sprite*   DisplayableObject::getSprite(void)     const
@@ -98,4 +116,9 @@ sf::Texture   DisplayableObject::getTexture(void)    const
 sf::Vector2f    DisplayableObject::getDimension(void)  const
 {
     return _hitbox;
+}
+
+float           DisplayableObject::getAngle(void)      const
+{
+    return _angle;
 }
