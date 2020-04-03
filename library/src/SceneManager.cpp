@@ -40,7 +40,7 @@ displaySkipper:
         _window->clear(sf::Color::Black);
         _cursor->setPosition(static_cast<sf::Vector2f>(_cursor->getMouse().getPosition(*_window)), _cursor->getSprite());
 
-        for (auto displayableElement : _scenes[_currentScene].getGameObjects()) {
+        for (auto displayableElement : _scenes[_currentScene]->getGameObjects()) {
             if (displayableElement->getTag() == "ActionButton")
                 (static_cast<ActionButton *>(displayableElement))->update(_cursor->getPosition());
             
@@ -66,7 +66,7 @@ void SceneManager::makeTransition(void)
     size_t iterator = 0;
 
     if (_transition->playTransition()) {
-        this->_scenes[_currentScene].eraseObject("transition");
+        this->_scenes[_currentScene]->eraseObject("transition");
         this->setCurrentScene(_transitionTo);
         _transitionTo = "continue";
     }
@@ -76,9 +76,10 @@ void SceneManager::makeTransition(void)
  
 void SceneManager::addScene(std::string const &name)
 {
-    Scene scene(name);
+    Scene *scene = new Scene(name);
+
     _scenes.push_back(scene);
-    _scenes[this->getScene(name)].addObject(
+    _scenes[this->getScene(name)]->addObject(
         dynamic_cast<GameObject *>(
         dynamic_cast<DisplayableObject *>(_cursor)
         )
@@ -87,12 +88,12 @@ void SceneManager::addScene(std::string const &name)
 
 void SceneManager::addObject(GameObject *object)
 {
-    _scenes[_currentScene].addObject(object);
+    _scenes[_currentScene]->addObject(object);
 }
 
 void SceneManager::addObjectTo(GameObject *object, std::string const &name)
 {
-    _scenes[this->getScene(name)].addObject(object);
+    _scenes[this->getScene(name)]->addObject(object);
 }
 
 /* DELETERS */
@@ -102,8 +103,9 @@ void SceneManager::deleteScene(std::string const &name)
     size_t iterator = 0;
 
     for (auto scene : _scenes) {
-        if (scene.getName() == name) {
+        if (scene->getName() == name) {
             _scenes.erase(_scenes.begin() + iterator);
+            delete scene;
             break;
         }
         iterator++;
@@ -122,7 +124,7 @@ void SceneManager::setCurrentScene(std::string const &name)
     size_t iterator = 0;
 
     for (auto scene : _scenes) {
-        if (scene.getName() == name) {
+        if (scene->getName() == name) {
             _currentScene = iterator;
             break;
         }
@@ -170,7 +172,7 @@ sf::RenderWindow      *SceneManager::getWindow() const
     return _window;
 }
 
-std::vector<Scene>    SceneManager::getScenes() const
+std::vector<Scene *>    SceneManager::getScenes() const
 {
     return _scenes;
 }
@@ -185,7 +187,7 @@ size_t                SceneManager::getScene(std::string const &name) const
     size_t iterator = 0;
 
     for (auto scene : _scenes) {
-        if (scene.getName() == name)
+        if (scene->getName() == name)
             return iterator;
         iterator++;
     }

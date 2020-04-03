@@ -39,17 +39,17 @@ class SceneManager
         void setPersonalCursor(std::string const &texture);
 
         /* GETTERS */
-        sf::RenderWindow *    getWindow()                       const;
-        std::vector<Scene>    getScenes()                       const;
-        size_t                getCurrentScene()                 const;
-        size_t                getScene(std::string const &name) const;
+        sf::RenderWindow *      getWindow()                       const;
+        std::vector<Scene *>    getScenes()                       const;
+        size_t                  getCurrentScene()                 const;
+        size_t                  getScene(std::string const &name) const;
 
     private:
-        sf::RenderWindow *  _window;
-        size_t              _currentScene;
-        std::vector<Scene>  _scenes;
-        Cursor *            _cursor;
-        sf::Keyboard::Key   _leaveKey;
-        Transition *        _transition;
-        std::string         _transitionTo;
+        sf::RenderWindow *      _window;
+        size_t                  _currentScene;
+        std::vector<Scene *>    _scenes;
+        Cursor *                _cursor;
+        sf::Keyboard::Key       _leaveKey;
+        Transition *            _transition;
+        std::string             _transitionTo;
 };
