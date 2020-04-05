@@ -37,6 +37,8 @@ function install()
     sudo cp -r . /bin/SFML-Engine
     sudo cp script/parameter.sh /bin/SFE
     sudo chmod 777 /bin/SFE
+    rm -rf *
+    rmdir ../SFML-Engine
     echo "Installation completed ! you can now use SFE command to use the engine you can see the documentation online or use SFE --help"
 }
 

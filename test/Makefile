@@ -11,7 +11,7 @@ SRC	=	src/main.cpp
 
 OBJECTS =	${SRC:.cpp=.o}
 
-NAME	=	test
+NAME	=	a.out
 
 CFLAGS	=	-Wall -Wextra -pedantic -Ofast -I ../library/include -I./include
 
@@ -26,13 +26,14 @@ all:	${NAME}
 ${NAME}:	${OBJECTS}
 	@${CC} -o ${NAME} ${OBJECTS} ${LDFLAGS}
 	@echo -e "\e[0;92mDone ${NAME}\e[0m"
+	@mv ${NAME} ..
 
 clean:
 	@rm -f ${OBJECTS}
 	@echo -e "\e[38;5;208mObjects:\e[38;5;124m\tDeleted\e[0m"
 
 fclean:	clean
-	@rm -f ${NAME}
+	@rm -f ../${NAME}
 	@echo -e "\e[0;92mExecutable:\e[38;5;124m\tDeleted\e[0m"
 
 re:	fclean all

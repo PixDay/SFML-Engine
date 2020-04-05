@@ -8,6 +8,8 @@ function main()
         help
     elif [[ $1 = "create" ]]; then
         create_project $2
+    elif [[ $1 = "uninstall" ]]; then
+        sudo /bin/SFML-Engine/installer.sh
     fi
 }
 
@@ -35,6 +37,11 @@ function create_project()
     mkdir $1
     cd $1
     cp -r /bin/SFML-Engine/* .
+    rm installer.sh
+    rm -rf script
+    rm LICENSE
+    rm README.md
+    cd ..
     echo "SFML-Engine project created !"
 }
 
