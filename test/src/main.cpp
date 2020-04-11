@@ -1,6 +1,9 @@
 #include "SFML-Engine.h"
 #include "cube"
 #include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 
 void menu(void)
 {

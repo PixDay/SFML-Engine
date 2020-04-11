@@ -1,3 +1,6 @@
+#include <vector>
+#include <string>
+
 std::vector<std::string> cubeAnimation = {
     "img/animation/cube/cube000.png",
     "img/animation/cube/cube001.png",

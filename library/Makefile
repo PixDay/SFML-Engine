@@ -21,11 +21,9 @@ SRCS	=	src/GameObject.cpp			\
 
 OBJ	=	${SRCS:.cpp=.o}
 
-LDFLAGS	=	-lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio -I./include
-
 %.o:	%.cpp
 	@echo -e "\e[0;94mCompiled\t\e[0;95m$<\e[39m -> \e[38;5;208m$@\e[39m"
-	@${CC} -c $< -o $@ ${LDFLAGS}
+	@${CC} -c $< -o $@ -I./include
 
 NAME	=	libmerline.a
 
