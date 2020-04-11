@@ -64,6 +64,7 @@ int main(void)
     DisplayableObject * cube = new DisplayableObject("img/animation/cube/cube000.png");
     cube->setFunction(moveAnimatedObject);
     cube->addAnimation(cubeAnimation, 0.03, 1.0f, true);
+    cube->setVisibleTime(10.0f);
     cube->setLayout(19);
     const sf::Vector2f position(1550.0f, 800.0f);
     cube->setPosition(position, cube->getSprite());

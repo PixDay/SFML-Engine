@@ -9,6 +9,7 @@
 
 DisplayableObject::DisplayableObject():
 _sprite(new sf::Sprite()),
+_visibleTime(-1.0f),
 _animator(Animator(_sprite)),
 _function(nullptr)
 {
@@ -17,6 +18,7 @@ _function(nullptr)
 
 DisplayableObject::DisplayableObject(std::string const &texture):
 _sprite(new sf::Sprite()),
+_visibleTime(-1.0f),
 _animator(Animator(_sprite)),
 _function(nullptr)
 {
@@ -28,6 +30,7 @@ _function(nullptr)
 
 DisplayableObject::DisplayableObject(std::string const &texture, void (function)(DisplayableObject *)):
 _sprite(new sf::Sprite()),
+_visibleTime(-1.0f),
 _animator(Animator(_sprite)),
 _function(_function)
 {
@@ -45,6 +48,9 @@ DisplayableObject::~DisplayableObject()
 void DisplayableObject::update()
 {
     _animator.update();
+    if (_visibleTime > 0.0f && _clock.getElapsedTime().asSeconds() >= _visibleTime) {
+        this->setActive(false);
+    }
     if (_function != nullptr)
         _function(this);
 }
@@ -119,6 +125,12 @@ void DisplayableObject::setAngleCenter(float const &angle)
 void DisplayableObject::setFunction(void (*function)(DisplayableObject *))
 {
     _function = function;
+}
+
+void DisplayableObject::setVisibleTime(float time)
+{
+    _clock.restart();
+    _visibleTime = time;
 }
 
 /* GETTERS */

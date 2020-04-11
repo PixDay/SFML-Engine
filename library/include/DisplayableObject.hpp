@@ -36,6 +36,7 @@ class DisplayableObject : public GameObject
         void setAngle(float const &angle);
         void setAngleCenter(float const &angle);
         void setFunction(void (function)(DisplayableObject *));
+        void setVisibleTime(float time);
 
         /* GETTERS */
         sf::Sprite *    getSprite(void)     const;
@@ -49,7 +50,9 @@ class DisplayableObject : public GameObject
         sf::Vector2f    _origin;
         sf::Vector2f    _scale;
         sf::Vector2f    _hitbox;
+        sf::Clock       _clock;
         float           _angle;
+        float           _visibleTime;
         Animator        _animator;
         void            (*_function)(DisplayableObject *test);
 };
