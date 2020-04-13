@@ -30,6 +30,7 @@ function help()
     echo "    --help : show you the different available commands"
     echo "    update : updating the SFML-Engine and the SFE commands (can ask for password)"
     echo "    create [name] : create a directory with the given name that will contain the default file project for the SFML-Engine"
+    echo "    uninstall : will execute the first installer programe used to install this command so you can uninstall the engine"
 }
 
 function create_project()
