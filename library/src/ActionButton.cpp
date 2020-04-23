@@ -16,6 +16,8 @@ ActionButton::ActionButton(void (*function)(void), float x, float y)
     _function = function;
     this->setPosition({x, y}, this->getSprite());
     this->setLayout(9);
+    this->setDimension(190.0f, 49.0f);
+
 }
 
 ActionButton::ActionButton(void (*function)(void), float x, float y, std::string const &texture, std::string const &hoverTexture)
@@ -34,8 +36,8 @@ void ActionButton::update(sf::Vector2f const &point)
     sf::FloatRect hitbox {
         this->getPosition().x, 
         this->getPosition().y, 
-        _texture.getSize().x * this->getScale().x, 
-        _texture.getSize().y * this->getScale().y
+        this->_texture.getSize().x * this->getScale().x, 
+        this->_texture.getSize().y * this->getScale().y
     };
 
     this->setTexture((hitbox.contains(point)) ? _hoverTexture : _texture);

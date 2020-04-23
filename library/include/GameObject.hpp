@@ -23,6 +23,7 @@ class GameObject
         void setScale(sf::Vector2f const &scale, sf::Sprite *sprite);
         void setOrigin(sf::Vector2f const &origin, sf::Sprite *sprite);
         void setLayout(size_t const &layout);
+        void setIndex(size_t const &index);
         void setActive(bool const &active);
 
         /* GETTERS */
@@ -31,6 +32,7 @@ class GameObject
         sf::Vector2f    getPosition(void)   const;
         sf::Vector2f    getScale(void)      const;
         size_t          getLayout(void)     const;
+        size_t          getIndex(void)      const;
         bool            getActive(void)     const;
 
         /* OPERATORS */
@@ -43,5 +45,6 @@ class GameObject
         sf::Vector2f    _scale;
         sf::Vector2f    _origin;
         size_t          _layout;
+        size_t          _index;
         bool            _active;
 };

@@ -39,10 +39,11 @@ class SceneManager
         void setPersonalCursor(std::string const &texture);
 
         /* GETTERS */
-        sf::RenderWindow *      getWindow()                       const;
-        std::vector<Scene *>    getScenes()                       const;
-        size_t                  getCurrentScene()                 const;
-        size_t                  getScene(std::string const &name) const;
+        sf::RenderWindow *      getWindow()                                                 const;
+        std::vector<Scene *>    getScenes()                                                 const;
+        size_t                  getCurrentScene()                                           const;
+        size_t                  getScene(std::string const &name)                           const;
+        bool                    collide(std::string const &tag1, std::string const &tag2)   const;
 
     private:
         sf::RenderWindow *      _window;

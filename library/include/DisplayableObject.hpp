@@ -22,9 +22,11 @@ class DisplayableObject : public GameObject
         
         /* ADDERS */
         void addAnimation(std::vector<std::string> &frames, float timeToWait, float speed, bool loop);
+        void addObject(DisplayableObject *object);
 
         /* DELETERS */
         void deleteAnimation(std::string &name);
+        void deleteObject(std::string const &tag);
 
         /* SETTERS */
         void setTexture(std::string const &texture);
@@ -39,20 +41,22 @@ class DisplayableObject : public GameObject
         void setVisibleTime(float time);
 
         /* GETTERS */
-        sf::Sprite *    getSprite(void)     const;
-        sf::Texture     getTexture(void)    const;
-        sf::Vector2f    getDimension(void)  const;
-        float           getAngle(void)      const;
+        sf::Sprite *                        getSprite(void)     const;
+        sf::Texture                         getTexture(void)    const;
+        sf::Vector2f                        getDimension(void)  const;
+        float                               getAngle(void)      const;
+        std::vector<DisplayableObject *>    getObjects()        const;
 
     private:
-        sf::Sprite *    _sprite;
-        sf::Texture     _texture;
-        sf::Vector2f    _origin;
-        sf::Vector2f    _scale;
-        sf::Vector2f    _hitbox;
-        sf::Clock       _clock;
-        float           _angle;
-        float           _visibleTime;
-        Animator        _animator;
-        void            (*_function)(DisplayableObject *test);
+        sf::Sprite *                        _sprite;
+        sf::Texture                         _texture;
+        sf::Vector2f                        _origin;
+        sf::Vector2f                        _scale;
+        sf::Vector2f                        _hitbox;
+        sf::Clock                           _clock;
+        float                               _angle;
+        float                               _visibleTime;
+        Animator                            _animator;
+        void                                (*_function)(DisplayableObject *test);
+        std::vector<DisplayableObject *>    _objects;
 };

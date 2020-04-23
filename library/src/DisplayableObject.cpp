@@ -61,11 +61,31 @@ void DisplayableObject::addAnimation(std::vector<std::string> &frames, float tim
     _animator.addAnimation(frames, timeToWait, speed, loop);
 }
 
+void DisplayableObject::addObject(DisplayableObject *object)
+{
+    _objects.push_back(object);
+}
+
 /* DELETERS */
 void DisplayableObject::deleteAnimation(std::string &name)
 {
     _animator.deleteAnimation(name);
 }
+
+void DisplayableObject::deleteObject(std::string const &tag)
+{
+    size_t iterator = 0;
+
+    for (auto object : _objects) {
+        if (object->getTag() == tag) { 
+            delete object;
+            _objects.erase(_objects.begin() + iterator);
+            break;
+        }
+        iterator++;
+    }
+}
+
 
 /* SETTERS */
 
@@ -135,22 +155,27 @@ void DisplayableObject::setVisibleTime(float time)
 
 /* GETTERS */
 
-sf::Sprite*   DisplayableObject::getSprite(void)     const
+sf::Sprite*                         DisplayableObject::getSprite(void)     const
 {
     return _sprite;
 }
 
-sf::Texture   DisplayableObject::getTexture(void)    const
+sf::Texture                         DisplayableObject::getTexture(void)    const
 {
     return _texture;
 }
 
-sf::Vector2f    DisplayableObject::getDimension(void)  const
+sf::Vector2f                        DisplayableObject::getDimension(void)  const
 {
     return _hitbox;
 }
 
-float           DisplayableObject::getAngle(void)      const
+float                               DisplayableObject::getAngle(void)      const
 {
     return _angle;
+}
+
+std::vector<DisplayableObject *>    DisplayableObject::getObjects()        const
+{
+    return _objects;
 }

@@ -58,6 +58,11 @@ void GameObject::setLayout(size_t const &layout)
     _layout = layout;
 }
 
+void GameObject::setIndex(size_t const &index)
+{
+    _index = index;
+}
+
 void GameObject::setActive(bool const &active)
 {
     _active = active;
@@ -91,6 +96,10 @@ size_t        GameObject::getLayout(void)     const
     return _layout;
 }
 
+size_t        GameObject::getIndex(void)       const
+{
+    return _index;
+}
 
 bool          GameObject::getActive(void)     const
 {
