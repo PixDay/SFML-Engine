@@ -78,7 +78,7 @@ void SceneManager::addScene(std::string const &name)
 {
     Scene *scene = new Scene(name);
 
-    _scenes.push_back(scene);
+    _scenes.emplace_back(scene);
     _scenes[this->getScene(name)]->addObject(
         dynamic_cast<GameObject *>(
         dynamic_cast<DisplayableObject *>(_cursor)

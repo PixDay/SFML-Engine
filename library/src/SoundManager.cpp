@@ -42,7 +42,7 @@ void SoundManager::addSound(std::string const &name, std::string const &path)
 {
     Sound sound(name, path);
 
-    _sounds.push_back(sound);
+    _sounds.emplace_back(sound);
 }
 
 void SoundManager::addSound(std::string const &name, std::string const &path, bool loop)
@@ -50,7 +50,7 @@ void SoundManager::addSound(std::string const &name, std::string const &path, bo
     Sound sound(name, path);
     
     sound.getSound()->setLoop(loop);
-    _sounds.push_back(sound);
+    _sounds.emplace_back(sound);
 }
 
 /* DELETERS */

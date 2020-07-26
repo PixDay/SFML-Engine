@@ -25,7 +25,7 @@ void Animator::addAnimation(std::vector<std::string> &frames, float timeToWait, 
 {
     Animation animation(frames, timeToWait, speed, loop);
 
-    _animations.push_back(animation);
+    _animations.emplace_back(animation);
     _totalAnimation++;
 }
 

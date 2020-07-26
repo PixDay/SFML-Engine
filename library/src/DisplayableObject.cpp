@@ -63,7 +63,7 @@ void DisplayableObject::addAnimation(std::vector<std::string> &frames, float tim
 
 void DisplayableObject::addObject(DisplayableObject *object)
 {
-    _objects.push_back(object);
+    _objects.emplace_back(object);
 }
 
 /* DELETERS */

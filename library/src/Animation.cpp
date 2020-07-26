@@ -29,7 +29,7 @@ _play(false)
     for(auto texturePath : _texturesPath) {
         sf::Texture texture;
         texture.loadFromFile(texturePath);
-        _textures.push_back(texture);
+        _textures.emplace_back(texture);
     }
         
 }
@@ -46,7 +46,7 @@ _play(loop)
     for(auto texturePath : _texturesPath) {
         sf::Texture texture;
         texture.loadFromFile(texturePath);
-        _textures.push_back(texture);
+        _textures.emplace_back(texture);
     }
 }
 
